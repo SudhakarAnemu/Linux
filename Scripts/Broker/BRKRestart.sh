@@ -19,7 +19,7 @@ sleep 10
 echo -e "\n------------------------------------------------Processes of the broker After stopping : - $(date +%Y-%m-%d_%H-%M-%S)"
 ps -ef | grep $brk | grep bip
 perl /WebSphere/scripts/middleware/wmbRestart.pl $brk start
-#sleep 15
+sleep 10
 echo -e "\n------------------------------------------------Processes of the broker After starting : - $(date +%Y-%m-%d_%H-%M-%S)"
 ps -ef | grep $brk | grep bip
 echo -e "\n------------------------------------------------Processes of the Execution groups : - $(date +%Y-%m-%d_%H-%M-%S)"

@@ -31,6 +31,8 @@ REFRESH QMGR TYPE(CONFIGEV) NAME(WMBQAAA26)
 4. WMB : 
 /WebSphere/scripts/middleware/BRKRestart.sh
 
+
+
 perl /WebSphere/scripts/middleware/wmbRestart.pl WMBQAAB26 stop;
 perl /WebSphere/scripts/middleware/wmbRestart.pl WMBQAAB26 start;
 

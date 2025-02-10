@@ -8,7 +8,6 @@
 
 brk=$1
 tag=$2
-
 echo -e "\nS.No - 1 : $brk : $tag- Status of the Broker(Port) - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
 mqsilist | grep $brk
 echo -e "\nS.No - 2 : $brk : $tag- mqsicvp(success) - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
@@ -20,6 +19,10 @@ LOG=jksJvmHttps.$brk.$tag.3
 cat $LOG
 echo -e "\nS.No - 3.1 : $brk : $tag- SSL(Key, Trust stores) Not-exists - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
 cat $LOG | grep 'Not-Exists'
+
+echo -e "\nS.No - 3.2 : $brk : $tag- SSL(Key, Trust stores) exists - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
+cat $LOG | grep -v 'Not-Exists'
+
 echo -e "\nS.No - 4 : $brk : $tag- HTTPports - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
 LOG=HttpHttpsPorts.$brk.$tag.4
 >$LOG

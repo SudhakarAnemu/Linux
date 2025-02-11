@@ -9,7 +9,6 @@
 #something like this /WebSphere/scripts/middleware/rmExpCerts.sh <list/delete> jksFile jskPwd
 #later we have to combine all of them to create master report , which can give you the snapshot of entire environment 
 
-
 #Assigning environment variables
 jksFile=$1
 jskPwd=$2

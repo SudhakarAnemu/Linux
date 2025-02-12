@@ -252,6 +252,21 @@ echo -e "\nS.No - 38 : $brk : $tag-Status of Flows - $(date +%Y-%m-%d_%H-%M-%S)-
 LOG=AllFlowStatus.$brk.$tag.11
 >$LOG
 mqsilist $brk -r > $LOG
+fname=$LOG
+echo -e "\n--------------------- List of Flows"
+cat $fname | grep -i stopped | grep BIP1278I | sort -n | awk -F" " '{print $8":"$12":"$4}' | sed "s/'//g" | sed "s/,//g"
+echo -e "\n--------------------- List of Flows(Count)"
+cat $fname | grep -i stopped | grep BIP1278I | sort -n | awk -F" " '{print $8":"$12":"$4}' | sed "s/'//g" | sed "s/,//g" | wc -l
+echo -e "\n--------------------- List of Application"
+cat $fname  | grep -i stopped |grep BIP1276I | sort -n | awk -F " " '{print $7":"$3}' | sed "s/'//g" | sed "s/,//g"
+echo -e "\n--------------------- List of Application(Count)"
+cat $fname  | grep -i stopped |grep BIP1276I | sort -n | awk -F " " '{print $7":"$3}' | sed "s/'//g" | sed "s/,//g" | wc -l
+echo -e "\n--------------------- List of EGs"
+cat $fname | grep -i stopped |grep BIP1287I | sort -n | awk -F " " '{print $4}' | sed "s/'//g" | sed "s/,//g"
+echo -e "\n--------------------- List of EGs(Count)"
+cat $fname | grep -i stopped |grep BIP1287I | sort -n | awk -F " " '{print $4}' | sed "s/'//g" | sed "s/,//g"
+
+
 echo -e "\nS.No - 39 : $brk : $tag-Count of stopped - WMB Components  (Stopped) - $(date +%Y-%m-%d_%H-%M-%S)--------------------------------------------------------"
 cat $LOG | grep -i stopped | wc -l
 echo -e "\nS.No - 40 : $brk : $tag-List of Stopped components - EGs, flows (Stopped) - $(date +%Y-%m-%d_%H-%M-%S)---------------------------------------------------"

@@ -20,8 +20,16 @@ mqsireportproperties $brk -o BrokerRegistry -r | grep -E "brokerTruststoreFile|b
 LOG=jksJvmHttps.$brk.$tag.3
 >$LOG
 /WebSphere/scripts/middleware/ace/jksExistsJvmHttps.sh $brk 3 $tag > $LOG
+cat $LOG
+#cat $LOG | grep -v 'Not-Exists'
 
+echo -e "\nS.No - 3.1 : $brk : $tag- SSL(Key, Trust stores) Not-exists - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
+cat $LOG | grep 'Not-Exists'
+
+echo -e "\nS.No - 3.2 : $brk : $tag- SSL(Key, Trust stores) exists - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
 cat $LOG | grep -v 'Not-Exists'
+
+
 echo -e "\nS.No - 4 : $brk : $tag- HTTPports - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
 LOG=HttpHttpsPorts.$brk.$tag.4
 >$LOG
@@ -43,7 +51,7 @@ do
    netstat -an | grep $line
 done < /tmp/del
 echo -e "\nS.No - 5 : List of Stopped flows - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
-mqsilist $brk -r| grep -i stop
+mqsilist $brk -r| grep -i stopped
 echo -e "\nCount of Stopped flows - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
 mqsilist $brk -r| grep -i stopped | wc -l
 
@@ -101,7 +109,10 @@ cat $LOG | grep TLS -B1
 echo -e "\nS.No - 8 : $brk : $tag-Total EGs to execute (#/2 pls) $brk - $(date +%Y-%m-%d_%H-%M-%S)------------------------------------------------------------------"
 cat $LOG | grep "sslProtocol='TLSv1.2'" | wc -l
 echo -e "\n--- EGs where we need to execute tls commands"
-cat $LOG | grep "sslProtocol='TLSv1.2'" -B 1 | grep "Prop of tls" | awk -F " " '{print $6}'
+#cat $LOG | grep "sslProtocol='TLSv1.2'" -B 1 | grep "Prop of tls" | awk -F " " '{print $6}'
+
+cat $LOG | grep "TLSProtocols='TLSv1.2'" -B 4 | grep 'Prop of tls'
+
 
 echo -e "\nS.No - 9 : $brk : $tag-tls of all EGs - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------------------"
 mqsireportproperties $brk -b pubsub -o MQTTServer -r

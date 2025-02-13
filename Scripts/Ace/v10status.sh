@@ -44,7 +44,7 @@ do
    netstat -an | grep $line
 done < /tmp/del
 echo -e "\nS.No - 5 : List of Stopped flows - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
-mqsilist $brk -r| grep -i stop
+mqsilist $brk -r| grep -i stopped
 echo -e "\nCount of Stopped flows - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
 mqsilist $brk -r| grep -i stopped | wc -l
 

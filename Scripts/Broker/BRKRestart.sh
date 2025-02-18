@@ -1,7 +1,7 @@
 #JS - It restarts the broker. 
 
 # /WebSphere/scripts/middleware/BRKRestart.sh
-#  /WebSphere/scripts/middleware/wmbRestart.pl bkr stop start
+
 
 #!/bin/bash
 brk=$1
@@ -38,7 +38,7 @@ echo -e "-------------------Completed-------------------"
 
 
 #!/bin/bash
-my_array=("WMBPRAA21" "IIBPRAA21" "IIBPRAA26" "WMBPRAA26" "IIBPRAA30")
+my_array=("WMBPRAC26" "IIBPRAC26" "WMBPRAC23" "IIBPRAC30" "WMBPRAC21" "IIBPRAC21" "IIBPRBC34" "IIBPRAC23")
 
 #WMBPRAA21 IIBPRAA21 IIBPRAA26 WMBPRAA26 IIBPRAA30
 

@@ -10,15 +10,22 @@ ACE Migrations
 /WebSphere/scripts/middleware/ace/v10status.sh
 /WebSphere/scripts/middleware/ace/v12status.sh
 
-2. JKS SSL 
+2. JKS SSL ----------------------------------------------------------------------------------------------------
+1. List out jks with text : exists or not. 
 /WebSphere/scripts/middleware/ace/jksExistsJvmHttps.sh
+2. Import Missed certs on first one from the second one. 
 /WebSphere/scripts/middleware/ImprtMssdCrts.sh firstjks pwd secondjks pwd
+3. Compare first and second jks files. 
 /WebSphere/scripts/middleware/CompareTwoJKS.sh firstjks pwd secondjks pwd
+4. List out Expiry certs of a Jks. 
 /WebSphere/scripts/middleware/ListoutExpiryCerts.sh 
-List lables with valid and more details of lables.
-/WebSphere/scripts/middleware/Listssllabls.sh <jks> <pwd>
-Remove expired certs : 
+5. Remove expired certificates
 /WebSphere/scripts/middleware/rmExpCerts.sh
+6. 
+List out lables with valid and more details of lables.
+a. /WebSphere/scripts/middleware/Listssllabls.sh <jks> <pwd>
+b. /WebSphere/scripts/middleware/ListssllablsV1.sh <jks> <pwd>
+
 
 3. WMQ 
 /WebSphere/scripts/middleware/ace/MigMQ.sh qmgr brk ver

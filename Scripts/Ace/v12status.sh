@@ -113,11 +113,14 @@ echo -e "\n--- EGs where we need to execute tls commands"
 
 cat $LOG | grep "TLSProtocols='TLSv1.2'" -B 4 | grep 'Prop of tls'
 
-
 echo -e "\nS.No - 9 : $brk : $tag-tls of all EGs - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------------------"
 mqsireportproperties $brk -b pubsub -o MQTTServer -r
 
 echo -e "\nS.No - 10 : $brk : $tag- Verifying BIP6071E at broker log.  - $(date +%Y-%m-%d_%H-%M-%S)-"
 cat /var/log/wmb.log | grep -i BIP6071E
+
+echo -e "S.No - 11 : $brk : $tag- Validating override prop of all EGs.  - $(date +%Y-%m-%d_%H-%M-%S)-"
+
+/WebSphere/scripts/middleware/ace/egOvridJksList.sh $brk v1 v1 v1 > $brk.egOvridJksList.log
 
 echo "---------------------------- Completed ----------------------------"

@@ -12,7 +12,7 @@ echo -e "Collecting override properties of all EGs"
 SNO=1
 while IFS= read -r line
 do   
-   echo -e "---------------------------------------------------------------------------------------- $brk----------------- $SNO"
+   echo -e "-----/var/mqsi/components/$brk/servers/--$line--------------- $brk----------------- $SNO"
    echo "SNo : $SNO - List - Name of the EG : $line - $brk"
    egrep 'jks|store|HTTP|JVM' $line 
    echo "SNo : $SNO - Count - Name of the EG : $line - $brk" 

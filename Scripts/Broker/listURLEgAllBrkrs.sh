@@ -1,8 +1,7 @@
 #JS 
 
-#mqsireportproperties IIBPRAA34 -e esb_eg4 -o HTTPSConnector -r | grep "url="
-
-#/WebSphere/scripts/middleware/listURLEg.sh
+#!/bin/bash
+#/WebSphere/scripts/middleware/listURLEgAllBrkrs.sh
 #for i in 7 9 10
 for ver in 7 9 10 12
 do
@@ -17,7 +16,6 @@ do
       done
 done
 
+ 
 
-# mqsireportproperties IIBPRAA34 -e esb_eg4 -o HTTPSConnector -r | grep "url="
-
-
+ #mqsireportproperties brk -e eg -o HTTPSConnector -r | grep "url="

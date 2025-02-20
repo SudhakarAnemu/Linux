@@ -1,6 +1,8 @@
 js
 
-Melville[wmbadmin@varhpr136 apperrors]  cat /WebSphere/scripts/middleware/errqclean.sh
+cat /WebSphere/scripts/middleware/errqclean.sh
+
+
 apperrorsdir=/WebSphere/mqbackup/apperrors
 now=$(date +"%m%d%Y-%H%M")
 mkdir -p $apperrorsdir/$now
@@ -31,5 +33,4 @@ cd $apperrorsdir
 zip -rm apperrors_$now.zip $apperrorsdir/$now
 unzip -l apperrors_$now.zip |mail -r errqclean_noreply@cusa.canon.com -s "`hostname -a` :errqclean-sh "  q17020@cusa.canon.com
 
-
-Melville[wmbadmin@varhpr136 apperrors]
+ 

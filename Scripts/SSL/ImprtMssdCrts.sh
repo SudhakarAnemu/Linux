@@ -1,5 +1,5 @@
 #JS 
-# /WebSphere/scripts/middleware/ImprtMssdCrts.sh firstjks pwd secondjks pwd
+# /WebSphere/scripts/middleware/ImprtMssdCrts.sh /WebSphere/wmbconfig/tst/truststore/wmbtruststore.jks wmbtruststore secondjks pwd
 # /WebSphere/wmbconfig/tst/truststore/wmbtruststore.jks
 #js
 #!/bin/bash

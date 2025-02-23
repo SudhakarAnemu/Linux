@@ -1,7 +1,7 @@
 
 #js
 #Example :
-# /WebSphere/scripts/middleware/CompareTwoJKS.sh /WebSphere/wmbconfig/dev/truststore/wmbtruststore.jks wmbtruststore /WebSphere/wmbconfig/dev/keystore/v10/s21r3pr/cybersource.jks cybersource
+# /WebSphere/scripts/middleware/CompareTwoJKS.sh /WebSphere/wmbconfig/tst/truststore/wmbtruststore.jks wmbtruststore jks pwd
 
 #js
 #!/bin/bash
@@ -23,10 +23,6 @@ SNO=1
 while IFS= read -r finger;
 do
    label=`keytool -list -keystore $sjks -storepass $sPwd | grep $finger -B 1 | grep Entry | awk -F"," '{print $1}'`
-   #echo -e "\nS.No : $ENO, Label is ---$label---"
-   #echo -e "\nExpiry ................................. "
-   #keytool -list -keystore $sjks -storepass $sPwd -alias "$label" -v | grep Valid   
-
    keytool -list -v -keystore $sjks -storepass $sPwd -alias $label 2>/dev/null | grep "Valid from"
    expiry_date=$(keytool -list -v -keystore $sjks -storepass $sPwd -alias $label 2>/dev/null | grep "Valid from" | awk -F" " '{print $7}')
    valid_date=$(keytool -list -v -keystore $sjks -storepass $sPwd -alias $label 2>/dev/null | grep "Valid from" | awk -F" " '{print $3}')
@@ -44,4 +40,4 @@ done < /tmp/DNExists
 
 >/tmp/DNExists
 
-echo -e"\n------------------------------------ Completed ------------------------------------"
+echo -e "\n------------------------------------ Completed ------------------------------------"

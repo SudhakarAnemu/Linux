@@ -2,6 +2,7 @@
 
 #!/bin/bash
 #/WebSphere/scripts/middleware/ace/egOvridJksList.sh <Broker>
+# List out All override properties of the EGs based on the Broker. 
 brk=$1
 tag=$2
 log=$brk.$tag.egOvridJksList

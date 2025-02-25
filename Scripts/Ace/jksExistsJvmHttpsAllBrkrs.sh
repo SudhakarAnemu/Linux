@@ -2,7 +2,7 @@
 #js
 
 #!/bin/bash
-#/WebSphere/scripts/middleware/jksExistsJvmHttpsAllBrkrs.sh tag1 tag2 tag3
+#/WebSphere/scripts/middleware/ace/jksExistsJvmHttpsAllBrkrs.sh tag1 tag2 tag3
 #for i in 7 9 10
 for ver in 7 9 10 12
 do

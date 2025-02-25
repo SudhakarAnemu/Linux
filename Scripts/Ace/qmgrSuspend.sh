@@ -1,6 +1,6 @@
 #JS 
 
-#/WebSphere/scripts/middleware/qmgrSuspend.sh qmgr
+#/WebSphere/scripts/middleware/ace/qmgrSuspend.sh qmgr
 #!/bin/bash
 qmgr=$1
 

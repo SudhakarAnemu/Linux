@@ -1,6 +1,6 @@
 #JS 
 
-#/WebSphere/scripts/middleware/qmgrResume.sh qmgr
+#/WebSphere/scripts/middleware/ace/qmgrResume.sh qmgr
 #!/bin/bash
 qmgr=$1
 

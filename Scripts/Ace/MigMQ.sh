@@ -19,7 +19,7 @@ echo -e "\nHealth of the qmgr : " >> $LOG
 
 /WebSphere/scripts/middleware/mqhealth.sh | grep $qmgr >> $LOG
 
-/WebSphere/scripts/middleware/qmgrSuspend.sh $qmgr >> $LOG
+/WebSphere/scripts/middleware/ace/qmgrSuspend.sh $qmgr >> $LOG
 
 echo -e "mqsilist of the brk" >> $LOG
 mqsilist | grep $brk  >> $LOG

@@ -38,6 +38,16 @@ do
    ((SNO=SNO+1))
 done < /tmp/DNExists
 
->/tmp/DNExists
+echo -n "\n---------- Labels w.r.t Fingerprints : "
+
+SNO=1
+while IFS= read -r finger;
+do
+   echo -e "\n $SNO -- Label for - $sjks $sPwd $finger -----------------------------------------------------------------------------------------"
+   /WebSphere/scripts/middleware/aliasByFprnt.sh $sjks $sPwd $finger
+   ((SNO=SNO+1))
+done < /tmp/DNExists
+
+#>/tmp/DNExists
 
 echo -e "\n------------------------------------ Completed ------------------------------------"

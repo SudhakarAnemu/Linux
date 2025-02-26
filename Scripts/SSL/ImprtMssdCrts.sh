@@ -1,5 +1,5 @@
 #JS 
-# /WebSphere/scripts/middleware/ImprtMssdCrts.sh /WebSphere/wmbconfig/tst/truststore/wmbtruststore.jks wmbtruststore secondjks pwd
+# /WebSphere/scripts/middleware/ace/ImprtMssdCrts.sh /WebSphere/wmbconfig/tst/truststore/wmbtruststore.jks wmbtruststore secondjks pwd
 # /WebSphere/wmbconfig/tst/truststore/wmbtruststore.jks
 #js
 #!/bin/bash
@@ -16,7 +16,7 @@ echo -e "\nNumber of certs on first jks : $fJks"
 keytool -list -keystore $fJks -storepass $fPwd | grep "Your keystore contains"
 echo -e "\nNumber of certs on second jks : $sjks"
 keytool -list -keystore $sjks -storepass $sPwd | grep "Your keystore contains"
-/WebSphere/scripts/middleware/CompareTwoJKS.sh $fJks $fPwd $sjks $sPwd | grep "does not exist" | awk -F " " '{print $1}' > /tmp/mfin
+/WebSphere/scripts/middleware/ace/CompareTwoJKS.sh $fJks $fPwd $sjks $sPwd | grep "does not exist" | awk -F " " '{print $1}' > /tmp/mfin
 echo -e "\nMissed finger prints : "
 cat -n /tmp/mfin
 echo -e "\nFinding labels, import and export"

@@ -19,3 +19,5 @@ do
    cat /tmp/del | grep -E "Valid|Owner|Issuer"
     ((SNO=SNO+1))
 done < /tmp/alllbls
+
+# keytool -list -keystore $1 -storepass $2 -alias "$line" -v | grep -E "Valid|Owner|Issuer"

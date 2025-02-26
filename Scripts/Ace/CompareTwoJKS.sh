@@ -1,7 +1,7 @@
 
 #js
 #Example :
-# /WebSphere/scripts/middleware/CompareTwoJKS.sh /WebSphere/wmbconfig/tst/truststore/wmbtruststore.jks wmbtruststore jks pwd
+# /WebSphere/scripts/middleware/ace/CompareTwoJKS.sh /WebSphere/wmbconfig/tst/truststore/wmbtruststore.jks wmbtruststore jks pwd
 
 #js
 #!/bin/bash
@@ -15,7 +15,7 @@ echo -e "\n First jks : ---$1--- pwd : ---$2---"
 echo -e "\n Second jks : ---$3--- pwd : ---$4---"
 keytool -list -keystore $1 -storepass $2 | grep fingerprint | awk -F" " '{print $4}' > file1
 keytool -list -keystore $3 -storepass $4 | grep fingerprint | awk -F" " '{print $4}' > file2
-/WebSphere/scripts/middleware/check_lines.sh file1 file2
+/WebSphere/scripts/middleware/ace/check_lines.sh file1 file2
 echo -e "\n--------------- Finger prints which did not exists --------------- "
 cat /tmp/DNExists
 echo -e "\n------------- Lables and expiry basedon the Finger prints"
@@ -38,13 +38,13 @@ do
    ((SNO=SNO+1))
 done < /tmp/DNExists
 
-echo -n "\n---------- Labels w.r.t Fingerprints : "
+echo -e "\n---------- Labels w.r.t Fingerprints : "
 
 SNO=1
 while IFS= read -r finger;
 do
    echo -e "\n $SNO -- Label for - $sjks $sPwd $finger -----------------------------------------------------------------------------------------"
-   /WebSphere/scripts/middleware/aliasByFprnt.sh $sjks $sPwd $finger
+   /WebSphere/scripts/middleware/ace/aliasByFprnt.sh $sjks $sPwd $finger
    ((SNO=SNO+1))
 done < /tmp/DNExists
 

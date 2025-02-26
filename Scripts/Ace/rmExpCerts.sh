@@ -1,5 +1,5 @@
 #JS
-#/WebSphere/scripts/middleware/rmExpCerts.sh
+#/WebSphere/scripts/middleware/ace/rmExpCerts.sh
 #!/bin/bash
 
 # Improvements

@@ -1,6 +1,6 @@
 #js 
 
-# /WebSphere/scripts/middleware/aliasByFprnt.sh abc.jks pwd fprint
+# /WebSphere/scripts/middleware/ace/aliasByFprnt.sh abc.jks pwd fprint
 
 #!/bin/bash
 

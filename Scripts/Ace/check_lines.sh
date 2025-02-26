@@ -1,7 +1,7 @@
 #js
 # Check file1(ciphers) exists on Full list ciphers.
 
-#/WebSphere/scripts/middleware/check_lines.sh
+#/WebSphere/scripts/middleware/ace/check_lines.sh
 #!/bin/bash
 # Check if two filenames are provided as arguments
 DNExists=/tmp/DNExists

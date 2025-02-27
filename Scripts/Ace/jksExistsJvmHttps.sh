@@ -11,13 +11,13 @@ BrkKeyStFile=`mqsireportproperties $brk -o BrokerRegistry -n brokerKeystoreFile 
     if ! [[ -f $BrkKeyStFile ]]; then
         echo -e "Not-Exists:$brk:Keystore:$BrkKeyStFile" >> $LOG
     else
-        echo -e "Exists:$brk:Keystore$BrkKeyStFile" >> $LOG
+        echo -e "Exists:BrkRegi:$brk:Keystore:$BrkKeyStFile" >> $LOG
     fi
 BrkTrustFile=`mqsireportproperties $brk -o BrokerRegistry -n brokerTruststoreFile | grep -v BIP8071I | tr -d '\n'`
     if ! [[ -f $BrkTrustFile ]]; then
         echo -e "Not-Exists:$brk:Truststore:$BrkTrustFile" >> $LOG
     else
-        echo -e "Exists:$brk:Truststore:$BrkTrustFile" >> $LOG
+        echo -e "Exists:BrkRegi:$brk:Truststore:$BrkTrustFile" >> $LOG
     fi
 for i in `mqsilist $brk|grep BIP1286I|awk -F"'" '{print $2}' | sort -n`;   do
     CkeystoreFile=`mqsireportproperties  $brk -e $i -o HTTPSConnector -n keystoreFile|grep -v BIP8071I|tr -d '\n'`

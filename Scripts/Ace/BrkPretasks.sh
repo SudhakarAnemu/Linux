@@ -413,6 +413,5 @@ echo -e "\n----- Path of s21ib_fw_java.jar using find command"
 cd /var/mqsi/config/$brk/
 find ./ -name s21ib_fw_java.jar
 
-
 echo -e "\nSuccessfully completed - Bye Bye"
 echo "----> Completed <----"

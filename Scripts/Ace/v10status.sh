@@ -34,6 +34,11 @@ cat $LOG
 echo -e "\nHTTP and HTTPs ports $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------------------" >>/tmp/$brk.impli
 cat $LOG >>/tmp/$brk.impli
 
+
+echo -e "\n-----------Actual http commands needs to execute" >>/tmp/$brk.impli
+/WebSphere/scripts/middleware/ace/New1_HttpHttpsPorts.sh $brk 8.1 $tag >>/tmp/$brk.impli
+
+
 echo -e "\nVerifying the netstat of HTTPPort"
 cat $LOG | awk -F"-" '{print $4}' | grep -v ":0" | cut -d":" -f2 > /tmp/del
 while IFS= read -r line

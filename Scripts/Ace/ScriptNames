@@ -9,6 +9,9 @@ ACE Migrations
 /WebSphere/scripts/middleware/ace/BrkPretasks.sh
 /WebSphere/scripts/middleware/ace/v10status.sh
 /WebSphere/scripts/middleware/ace/v12status.sh
+/WebSphere/scripts/middleware/ace/d2OfBroker.sh
+
+
 
 2. JKS SSL ----------------------------------------------------------------------------------------------------
 1. List out jks with text : exists or not. 

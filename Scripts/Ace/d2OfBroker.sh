@@ -1,6 +1,6 @@
 #JS 
 
-#/WebSphere/scripts/middleware/d2OfBroker.sh
+#/WebSphere/scripts/middleware/ace/d2OfBroker.sh
 
 #!/bin/bash
 
@@ -20,7 +20,6 @@ mqsilist $brk -r -d2 |egrep '^BIP|Deployed|VERSION'|grep -v BIP8071I >> temp.out
      tac eglist.out > esb_eglist_final.out
 
 cp esb_eglist_final.out $brk.d2_final.out
-
 
 #
 #rm -f temp.out eglist.out esb_eglist_final.out

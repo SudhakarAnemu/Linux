@@ -8,6 +8,7 @@
 
 brk=$1
 tag=$2
+#>/tmp/$brk.impli
 echo -e "\nS.No - 1 : $brk : $tag- Status of the Broker(Port) - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
 mqsilist | grep $brk
 echo -e "\nS.No - 2 : $brk : $tag- mqsicvp(success) - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
@@ -29,6 +30,10 @@ LOG=HttpHttpsPorts.$brk.$tag.4
 /WebSphere/scripts/middleware/ace/HttpHttpsPorts.sh $brk 4 $tag > $LOG
 echo -e "\nHTTP and HTTPs ports $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------------------"
 cat $LOG
+
+echo -e "\nHTTP and HTTPs ports $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------------------" >>/tmp/$brk.impli
+cat $LOG >>/tmp/$brk.impli
+
 echo -e "\nVerifying the netstat of HTTPPort"
 cat $LOG | awk -F"-" '{print $4}' | grep -v ":0" | cut -d":" -f2 > /tmp/del
 while IFS= read -r line

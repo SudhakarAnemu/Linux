@@ -15,6 +15,8 @@
 
 brk=$1
 tag=$2
+>/tmp/$brk.impli
+echo -e "JS\nBelow commands needs to be execute after taking backup of the Broker" >> /tmp/$brk.impli
 #pathtrust=/WebSphere/wmbconfig/tst/truststore/wmbtruststore.jks
 #pathtrust=/WebSphere/wmbconfig/dev/truststore/wmbtruststore.jks
 #pathtrust=/WebSphere/wmbconfig/qa/truststore/wmbtruststore.jks
@@ -144,6 +146,17 @@ do
    echo -e "mqsichangeproperties $brk -e $eg  -o ComIbmJVMManager -n truststoreType,truststoreFile,truststorePass -v JKS,$pathtrust,$eg::truststorePass"
    echo -e "mqsisetdbparms $brk -n $eg::truststorePass -u ignore -p wmbtruststore"
 done < /tmp/del
+
+echo "------------------- Truststore commands : " >> /tmp/$brk.impli
+
+while IFS= read -r eg
+do
+   echo -e "mqsichangeproperties $brk -e $eg  -o ComIbmJVMManager -n truststoreType,truststoreFile,truststorePass -v JKS,$pathtrust,$eg::truststorePass" >> /tmp/$brk.impli
+   echo -e "mqsisetdbparms $brk -n $eg::truststorePass -u ignore -p wmbtruststore" >> /tmp/$brk.impli
+done < /tmp/del
+
+
+
 echo -e "\nS.No - 20 : $brk : $tag-Keystores of Egs - $(date +%Y-%m-%d_%H-%M-%S)---------------------------------------------------------------------------------------"
 echo -e "\nS.No - 21 : $brk : $tag-Keystores of the EG - $(date +%Y-%m-%d_%H-%M-%S)------------------------------------------------------------------------------------"
 echo -e "\nS.No - 22 : $brk : $tag - Keystores of the EG - $(date +%Y-%m-%d_%H-%M-%S)---------------------------------------------------------------------------------"
@@ -163,6 +176,12 @@ do
 done < /tmp/del
 echo -e "\nS.No - 25 : $brk : $tag-Commands of Kestore to execute - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------"
 cat $LOG | grep -i ":Keystore" | grep -v Not | awk -F ":" '{print "mqsichangeproperties BROKER -e " $3 " -o ComIbmJVMManager -n keystoreFile -v " $5}'
+
+echo "------------------- Keystore commands : " >> /tmp/$brk.impli
+
+cat $LOG | grep -i ":Keystore" | grep -v Not | awk -F ":" '{print "mqsichangeproperties BROKER -e " $3 " -o ComIbmJVMManager -n keystoreFile -v " $5}' >> /tmp/$brk.impli
+
+
 echo -e "\nS.No - 26 : $brk : $tag-Key and Trust stores of Egs - $(date +%Y-%m-%d_%H-%M-%S)--------------------------------------------------------------------------"
 cat $LOG
 echo -e "\nS.No - 27 : $brk : $tag-Key and Trust stores of Egs(Only Exists) - $(date +%Y-%m-%d_%H-%M-%S)------------------------------------------------------------"
@@ -386,6 +405,17 @@ echo "mqsireportproperties $brk -b pubsub -o MQTTServer -r"
 echo "mqsichangeproperties $brk -b pubsub -o MQTTServer -n enabled -v false"
 echo "mqsichangeproperties $brk -b pubsub -o MQTTServer -n port -v '0'"
 echo "mqsireportproperties $brk -b pubsub -o MQTTServer -r"
+
+
+echo "------------------- MQTT Commands" >> /tmp/$brk.impli
+
+mqsireportproperties $brk -b pubsub -o MQTTServer -r  >> /tmp/$brk.impli
+echo "mqsireportproperties $brk -b pubsub -o MQTTServer -r"  >> /tmp/$brk.impli
+echo "mqsichangeproperties $brk -b pubsub -o MQTTServer -n enabled -v false"  >> /tmp/$brk.impli
+echo "mqsichangeproperties $brk -b pubsub -o MQTTServer -n port -v '0'"  >> /tmp/$brk.impli
+echo "mqsireportproperties $brk -b pubsub -o MQTTServer -r"  >> /tmp/$brk.impli
+
+
 echo -e "\nS.No - 66 : $brk : $tag-Health of the qmgr - $(date +%Y-%m-%d_%H-%M-%S)------------------------------------------------------------------------------------"
 /WebSphere/scripts/middleware/mqhealth.sh | grep $brk
 pwd
@@ -413,5 +443,23 @@ echo -e "\n----- Path of s21ib_fw_java.jar using find command"
 cd /var/mqsi/config/$brk/
 find ./ -name s21ib_fw_java.jar
 
+
+echo -e "\nS.No - 71 : Capture D2 for all EGs of the Broker $brk - $(date +%Y-%m-%d_%H-%M-%S)---------------------------------------------------------------------"
+echo -e "\n----- Capture D2 for all EGs of the Broker $brk"
+
+/WebSphere/scripts/middleware/ace/d2OfBroker.sh $brk
+
+echo -e "\nS.No - 72 : $brk : $tag-List of all Files - $(date +%Y-%m-%d_%H-%M-%S)-------------------------------------------------------------------------------------"
+pwd
+ls -lrt *
+
 echo -e "\nSuccessfully completed - Bye Bye"
 echo "----> Completed <----"
+
+#echo -e "\n---- Now I am capturing v10statu logs for a quick reference : "
+
+#/WebSphere/scripts/middleware/ace/v10status.sh $brk v10_quick
+
+#echo -e "\nSuccessfully completed - Bye Bye"
+#echo "----> Completed <----"
+

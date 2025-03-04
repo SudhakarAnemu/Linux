@@ -9,8 +9,14 @@ ACE Migrations
 /WebSphere/scripts/middleware/ace/BrkPretasks.sh
 /WebSphere/scripts/middleware/ace/v10status.sh
 /WebSphere/scripts/middleware/ace/v12status.sh
+
 /WebSphere/scripts/middleware/ace/d2OfBroker.sh
 
+/WebSphere/scripts/middleware/ace/ValidJKSHttpsAfterBkp.sh
+
+/WebSphere/scripts/middleware/ace/chkJksV10V9ToACE.sh
+
+/WebSphere/scripts/middleware/ace/egOvridJksList.sh <Broker>
 
 
 2. JKS SSL ----------------------------------------------------------------------------------------------------

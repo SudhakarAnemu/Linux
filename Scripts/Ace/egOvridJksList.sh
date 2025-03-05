@@ -29,6 +29,8 @@ do
    cat $line | grep -i truststorePass| wc -l 
    echo -e "Number of JKS : " 
    cat $line | grep JKS| wc -l 
+   echo "SNo : $SNO - mq(mqtt) - Name of the EG : $line - $brk"
+   egrep 'mq|mqtt' $line    
    ((SNO=SNO+1))
 done < /tmp/egs
 echo "---------------------- Completed --------------------"
@@ -36,3 +38,4 @@ echo "---------------------- Completed --------------------"
 
 #for i in `find ./ -name server.conf.yaml |grep overrides`; do echo "--- $i -----"; egrep 'jks|store|HTTP|JVM' $i; done
 #for i in `find ./ -name server.conf.yaml |grep overrides`; do echo "--- $i -----"; egrep 'jks|store|HTTP|JVM' $i|wc -l; done
+#for i in `find ./ -name server.conf.yaml |grep overrides`; do echo "--- $i -----"; egrep 'mq' $i; done

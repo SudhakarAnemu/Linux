@@ -1,4 +1,8 @@
-#/WebSphere/scripts/middleware/portlist.sh
+#js 
+
+
+
+#/WebSphere/scripts/middleware/PortChkBrk.sh
 #for i in 7 9 10
 for i in  9 10 12
 do

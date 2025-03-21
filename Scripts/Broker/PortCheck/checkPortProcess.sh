@@ -21,6 +21,12 @@ if [[ $port  -ne '' || $port -ne 0 ]]; then
 fi
 done
 
+
+
+
+
+
+
 #for i in `cat port_output.txt|awk -F"-" '{print $2,$3,$4}'`; do listeningPID=`netstat -anp|grep $4|grep 'LISTEN'|awk '{ print $NF}'|awk -F"/" '{print $1}'`; lisenPID=ps -ef|grep $listeningPID|grep DataFlowEngine |awk '{print $NF}'
 # port : 19128
 # netstat -anp 2>/dev/null |grep 19128|grep 'LISTEN'|awk '{ print $NF}'|awk -F"/" '{print $1}'

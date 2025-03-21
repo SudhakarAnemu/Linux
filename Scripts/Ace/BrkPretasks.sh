@@ -136,7 +136,7 @@ echo -e "\n---------------------------------------------------------------------
 cat $LOG | grep -i trusts | grep -v Not
 echo -e "\n-------------------- All Unique Trusts"
 cat $LOG | grep -i trusts | grep -v Not | awk -F ":" '{print $5}' | uniq | sort -n
-echo -e "\nChk exits : /WebSphere/scripts/middleware/CompareTwoJKS.sh $pathtrust wmbtruststore RequirdJKS pwd | grep 'not exist'"
+echo -e "\nChk exits : /WebSphere/scripts/middleware/ace/CompareTwoJKS.sh $pathtrust wmbtruststore RequirdJKS pwd | grep 'not exist'"
 echo -e "\nS.No - 19 : $brk : $tag-Trustsore commands to be execute - $(date +%Y-%m-%d_%H-%M-%S)-------------------------------------------------------------------"
 >/tmp/del
 cat $LOG | grep -i trusts | grep -v Not | awk -F":" '{print $3}' > /tmp/del

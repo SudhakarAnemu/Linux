@@ -117,4 +117,7 @@ cat $LOG | grep "sslProtocol='TLSv1.2'" -B 1 | grep "Prop of tls" | awk -F " " '
 echo -e "\nS.No - 9 : $brk : $tag-tls of all EGs - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------------------"
 mqsireportproperties $brk -b pubsub -o MQTTServer -r
 
+echo -e "\nS.No - 10 : $brk - All files"
+ls -lrt
+
 echo "---------------------------- Completed ----------------------------"

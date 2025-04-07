@@ -115,6 +115,9 @@ cat $LOG | grep "TLSProtocols='TLSv1.2'" -B 4 | grep 'Prop of tls'
 
 echo -e "\nS.No - 9 : $brk : $tag-tls of all EGs - $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------------------"
 mqsireportproperties $brk -b pubsub -o MQTTServer -r
+echo -e "\n------------------------------------------------"
+mqsireportproperties $brk -b Events -r | grep -i MQTT -A 1
+echo -e "\n------------------------------------------------"
 
 echo -e "\nS.No - 10 : $brk : $tag- Verifying BIP6071E at broker log.  - $(date +%Y-%m-%d_%H-%M-%S)-"
 cat /var/log/wmb.log | grep -i BIP6071E

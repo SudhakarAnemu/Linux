@@ -19,6 +19,7 @@ ACE Migrations
 ---> Check jks exists at ace dir : 
 /WebSphere/scripts/middleware/ace/chkJksV10V9ToACE.sh
 
+----------------> Verify all EGsss - override properties 
 /WebSphere/scripts/middleware/ace/egOvridJksList.sh <Broker>
 
 Brk restart : 
@@ -28,8 +29,8 @@ QMGR Migration :
 /WebSphere/scripts/middleware/ace/MigMQ.sh qmgr brk ver
 
 
-/WebSphere/scripts/middleware/qmgrSuspend.sh qmgr
-/WebSphere/scripts/middleware/qmgrResume.sh qmgr
+/WebSphere/scripts/middleware/ace/qmgrSuspend.sh qmgr
+/WebSphere/scripts/middleware/ace/qmgrResume.sh qmgr
 
 
 

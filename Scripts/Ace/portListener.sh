@@ -7,7 +7,6 @@
 brk=$1
 LOG=log.$(date +%Y-%m-%d_%H-%M-%S)
 
-
 ENO=1
 bport1=`mqsireportproperties $brk -b httplistener -o HTTPSConnector -r | grep -i port | awk -F"'" '{print $2}' | tr -d '\n'`
 bport2=`mqsireportproperties $brk -b httplistener -o HTTPConnector -r | grep -i port | awk -F"'" '{print $2}' | tr -d '\n'`

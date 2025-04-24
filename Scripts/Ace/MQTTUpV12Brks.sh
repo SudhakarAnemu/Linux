@@ -4,7 +4,10 @@
 
 for brk in `mqsilist|grep BIP1284I|awk -F"'"  '{print $2}'`
 do
-
+    mqsichangeproperties $brk -b Events -o OperationalEvents/MQTT -n enabled -v false
+    mqsichangeproperties $brk -b Events -o BusinessEvents/MQTT -n enabled -v false
+    mqsichangeproperties $brk -b Events -o AdminEvents/MQTT -n enabled -v false
+    mqsichangeproperties $brk -b Events -o OperationalEvents/MQ -n enabled -v false	
 done
 
 

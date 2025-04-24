@@ -34,6 +34,19 @@ cat $LOG
 echo -e "\nHTTP and HTTPs ports $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------------------" >>/tmp/$brk.impli
 cat $LOG >>/tmp/$brk.impli
 
+echo -e "\n\nMQTT commands $(date +%Y-%m-%d_%H-%M-%S)-----------------------------------------------------------------------------------" >>/tmp/$brk.impli
+#cat $LOG >>/tmp/$brk.impli
+
+echo 'mqsireportproperties brk -b Events -r | egrep "OperationalEvents|BusinessEvents|AdminEvents"' >> /tmp/$brk.impli
+
+echo 'mqsichangeproperties brk -b Events -o OperationalEvents/MQTT -n enabled -v false' >> /tmp/$brk.impli
+echo 'mqsichangeproperties brk -b Events -o BusinessEvents/MQTT -n enabled -v false' >> /tmp/$brk.impli
+echo 'mqsichangeproperties brk -b Events -o AdminEvents/MQTT -n enabled -v false' >> /tmp/$brk.impli
+echo 'mqsichangeproperties brk -b Events -o OperationalEvents/MQ -n enabled -v false' >> /tmp/$brk.impli
+	
+	
+
+
 
 echo -e "\n-----------Actual http commands needs to execute" >>/tmp/$brk.impli
 /WebSphere/scripts/middleware/ace/New1_HttpHttpsPorts.sh $brk 8.1 $tag >>/tmp/$brk.impli

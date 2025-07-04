@@ -17,5 +17,21 @@ do
 done
 
  
+----> For specific broker : 
+
+
+#!/bin/bash
+#/WebSphere/scripts/middleware/listURLEgAllBrkrSpecific.sh
+brk=$1
+for eg in `mqsilist $brk|grep BIP1286I|awk -F"'" '{print $2}'`
+do
+      echo "---------------------------------------Version : $ver ---------- I am checking for $brk - $eg-------"   
+      mqsireportproperties $brk -e $eg -o HTTPSConnector -r | grep "url="
+done
+
+
+
+
+
 
  #mqsireportproperties brk -e eg -o HTTPSConnector -r | grep "url="

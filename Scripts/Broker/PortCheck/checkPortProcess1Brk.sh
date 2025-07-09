@@ -27,3 +27,22 @@ do
       fi
    fi
 done
+
+
+netsta -anp | grep listen  --> 
+
+VM[wmbadmin@varhdv122 ~] netstat -anp | grep 20025
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+tcp        0      0 0.0.0.0:20025           0.0.0.0:*               LISTEN      84335/biphttplisten
+VM[wmbadmin@varhdv122 ~] ps -ef | grep biphttplisten
+wmbadmin  28911  28855  0 Jun20 ?        00:26:22 /opt/ibm/mqsi/v12/ace-12.0.4.0/server/bin/biphttplistener IIBT2AB30
+wmbadmin  30001  29957  0 Jun20 ?        00:25:04 /opt/ibm/mqsi/v12/ace-12.0.4.0/server/bin/biphttplistener IIBT1AA21
+wmbadmin  31760  31651  0 Jun20 ?        00:31:12 /opt/ibm/mqsi/v12/ace-12.0.4.0/server/bin/biphttplistener WMBT1AA26
+wmbadmin  33143  33101  0 Jun20 ?        00:26:24 /opt/ibm/mqsi/v12/ace-12.0.4.0/server/bin/biphttplistener IIBT1AA30
+wmbadmin  38328  38297  0 Jun20 ?        00:26:45 /opt/ibm/mqsi/v12/ace-12.0.4.0/server/bin/biphttplistener IIBT2AB24
+wmbadmin  40254  40220  0 Jun20 ?        00:27:45 /opt/ibm/mqsi/v12/ace-12.0.4.0/server/bin/biphttplistener IIBT2AB23
+wmbadmin  75813  75780  0 Jun20 ?        00:33:15 /opt/ibm/mqsi/v12/ace-12.0.4.0/server/bin/biphttplistener WMBT2AB26
+wmbadmin  78657  70510  0 15:23 pts/2    00:00:00 grep --color=auto biphttplisten
+wmbadmin  84335  84307  0 10:55 ?        00:00:41 /opt/ibm/mqsi/v12/ace-12.0.4.0/server/bin/biphttplistener IIBT2AB25
+VM[wmbadmin@varhdv122 ~]

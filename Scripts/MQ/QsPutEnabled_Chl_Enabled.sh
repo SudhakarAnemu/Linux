@@ -1,5 +1,42 @@
 js
 
+------------------------->> Disable list of Qs for given QMGR. 
+
+#/WebSphere/scripts/middleware/disableQlist.sh
+#!/bin/bash
+SNO=1
+rm -rf disable.sh
+while IFS= read -r line
+do
+   echo -e "\nS.No : $SNO - Before Q : ***$line***"   
+   queue="${line//[[:space:]]/}"
+   echo -e "\nS.No : $SNO - After Q : ***$queue***"
+   echo "ALTER QL($queue) GET(DISABLED)" >> disable.sh
+   ((SNO=SNO+1))
+done < qlist
+
+------------------------->> Enable list of Qs for given QMGR. 
+#/WebSphere/scripts/middleware/enableQlist.sh
+#!/bin/bash
+SNO=1
+rm -rf enable.sh
+while IFS= read -r line
+do
+   echo -e "\nS.No : $SNO - Before Q : ***$line***"   
+   queue="${line//[[:space:]]/}"
+   echo -e "\nS.No : $SNO - After Q : ***$queue***"
+   echo "ALTER QL($queue) GET(ENABLED)" >> enable.sh
+   ((SNO=SNO+1))
+done < qlist
+
+
+
+
+
+
+
+
+
  
 echo "DIS QL(*) WHERE(PUT EQ DISABLED)" | runmqsc WASPRAD21  | grep QUEUE | awk -F"[(')]" '{print $2}' 
 
@@ -41,10 +78,6 @@ do
    done < /tmp/putq
    runmqsc $qmgr < puten.sh > puten.sh.out
 done
-
-
-
-
 
 --------------------------->> for multiple qmgrs : 
 
@@ -92,7 +125,6 @@ do
    done < /tmp/chl
    runmqsc $qmgr < chlen.sh > chlen.sh.out
 done
-
 
 ------------------------------------------------> Prepare runmqsc for disable enable and disaplay qs. 
 

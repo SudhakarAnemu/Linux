@@ -61,6 +61,9 @@ runmqsc $1 < puten.sh > puten.sh.out
 
 -----------------> Enable Qs for all QMGRs : 
 
+
+/WebSphere/scripts/middleware/enableputAllQmgrs.sh
+
 #!/bin/bash
 LOG=All.$(hostname).log.$(date "+%Y.%m.%d-%H.%M.%S")
 

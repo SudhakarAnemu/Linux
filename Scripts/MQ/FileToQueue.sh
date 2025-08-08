@@ -1,7 +1,7 @@
 js
 
 #!/bin/bash
-#/WebSphere/scripts/middleware/Files2Queue.sh qmgr queue
+#/WebSphere/scripts/middleware/Files2Queue.sh qmgr queue file
 export CLASSPATH=/WebSphere/wmqutil:/opt/mqm92/java/lib/com.ibm.mq.jar:%CLASSPATH%
 qmgr=$1
 queue=$2
@@ -15,9 +15,26 @@ do
     ((SNO=SNO+1))
 done
 
+----------------------------->> Post msg on File : 
+
+#!/bin/bash
+#/WebSphere/scripts/middleware/Files2Queue1File.sh qmgr queue file
+export CLASSPATH=/WebSphere/wmqutil:/opt/mqm92/java/lib/com.ibm.mq.jar:%CLASSPATH%
+qmgr=$1
+queue=$2
+file=$3
+echo -e "\nGiven QMGR : $qmgr, Queue : $queue, File : $file"
+/opt/mqm92/java/jre64/jre/bin/java -Djava.library.path=/opt/mqm92/java/lib64/ MQFile2Msg -q $queue -f $file -m $qmgr
+ 
+
+
+
 ---------------------------------->> 
 /WebSphere/scripts/middleware/Files2Queue.sh IIBT1AA34 E.CUSA0.C_ESBPS_X_PS_ITCGPP.I
 
+
+--> copy sw : 
+scp varhdv122:/WebSphere/wmqutil/mh06.zip .
 
 
 

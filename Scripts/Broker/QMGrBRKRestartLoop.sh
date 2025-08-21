@@ -76,3 +76,54 @@ do
          ((SNO=SNO+1))
       done
 done
+
+---> StOP ALL QMGRs. 
+
+#/WebSphere/scripts/middleware/StopAllQMGRs.sh
+#!/bin/bash
+
+SNO=1
+for i in 7 9 10 12 1212
+do
+      version=$i
+      . /WebSphere/scripts/middleware/wmbprofile $i >> /dev/null
+      #echo -e "\nI am listing Brokers for the version : $i - $version"
+      #mqsilist
+      echo -e "i = $i, version = $version"
+      for qmgr in `dspmq | grep Running | awk -F "(" '{print $2}' | awk -F ")" '{print $1}'`
+      do
+         echo -e "\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+         echo -e "\nS.No - $SNO - Version : $version Qmgr : $qmgr-----------------------------------------"
+         endmqm -i $qmgr         
+         ((SNO=SNO+1))
+      done
+done
+
+#/WebSphere/scripts/middleware/StopAllQMGRs1.sh
+#!/bin/bash
+
+SNO=1
+ 
+      for qmgr in `dspmq | grep Running | awk -F "(" '{print $2}' | awk -F ")" '{print $1}'`
+      do
+         echo -e "\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+         echo -e "\nS.No - $SNO - Version : $version Qmgr : $qmgr-----------------------------------------"
+         endmqm -i $qmgr         
+         ((SNO=SNO+1))
+      done
+ 
+#/WebSphere/scripts/middleware/StartAllQMGRs1.sh
+#!/bin/bash
+
+SNO=1
+ 
+      for qmgr in `dspmq | awk -F "(" '{print $2}' | awk -F ")" '{print $1}'`
+      do
+         echo -e "\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+         echo -e "\nS.No - $SNO - Version : $version Qmgr : $qmgr-----------------------------------------"
+         strmqm $qmgr         
+         ((SNO=SNO+1))
+      done
+ 
+
+

@@ -36,8 +36,6 @@ QMGR Migration :
 /WebSphere/scripts/middleware/ace/qmgrResume.sh qmgr
 
 
-
-
 2. JKS SSL ----------------------------------------------------------------------------------------------------
 1. List out jks with text : exists or not. 
 /WebSphere/scripts/middleware/ace/jksExistsJvmHttps.sh

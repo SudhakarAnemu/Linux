@@ -29,6 +29,21 @@ do
 done
 
 
+----------------------------->>> For all Brokers; : 
+
+
+#/WebSphere/scripts/middleware/checkPortProcessAllBrk.sh --> ALL Brks
+SNO=1
+for brk in `mqsilist|grep BIP1284I|awk -F"'"  '{print $2}'`
+do
+    echo -e "\nS.no : $SNO - Broker : $brk -------------------- "
+    /WebSphere/scripts/middleware/checkPortProcess1Brk.sh $brk
+    ((SNO=SNO+1))
+done
+
+
+
+
 netsta -anp | grep listen  --> 
 
 VM[wmbadmin@varhdv122 ~] netstat -anp | grep 20025
